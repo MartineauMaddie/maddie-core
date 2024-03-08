@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Assign3-2024-RLaw")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+92bdb57d791a6cfa6599d34f3fc26075c2a02b8b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+544a14534752e80799a5ac0722e86567290c9be7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Assign3-2024-RLaw")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Assign3-2024-RLaw")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

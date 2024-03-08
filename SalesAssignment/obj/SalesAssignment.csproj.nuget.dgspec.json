@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\CPSC1012\\SalesAssignment\\SalesAssignment.csproj": {}
+    "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\maddie-core\\SalesAssignment\\SalesAssignment.csproj": {}
   },
   "projects": {
-    "C:\\CPSC1012\\SalesAssignment\\SalesAssignment.csproj": {
+    "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\maddie-core\\SalesAssignment\\SalesAssignment.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\CPSC1012\\SalesAssignment\\SalesAssignment.csproj",
+        "projectUniqueName": "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\maddie-core\\SalesAssignment\\SalesAssignment.csproj",
         "projectName": "SalesAssignment",
-        "projectPath": "C:\\CPSC1012\\SalesAssignment\\SalesAssignment.csproj",
+        "projectPath": "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\maddie-core\\SalesAssignment\\SalesAssignment.csproj",
         "packagesPath": "C:\\Users\\Madeline\\.nuget\\packages\\",
-        "outputPath": "C:\\CPSC1012\\SalesAssignment\\obj\\",
+        "outputPath": "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\maddie-core\\SalesAssignment\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Madeline\\AppData\\Roaming\\NuGet\\NuGet.Config"

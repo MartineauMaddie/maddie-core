@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\CPSC1012\\Crypto Trading Assignment\\ConsoleApp2.csproj",
+      "projectUniqueName": "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\maddie-core\\Crypto Trading Assignment\\ConsoleApp2.csproj",
       "projectName": "ConsoleApp2",
-      "projectPath": "C:\\CPSC1012\\Crypto Trading Assignment\\ConsoleApp2.csproj",
+      "projectPath": "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\maddie-core\\Crypto Trading Assignment\\ConsoleApp2.csproj",
       "packagesPath": "C:\\Users\\Madeline\\.nuget\\packages\\",
-      "outputPath": "C:\\CPSC1012\\Crypto Trading Assignment\\obj\\",
+      "outputPath": "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\maddie-core\\Crypto Trading Assignment\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Madeline\\AppData\\Roaming\\NuGet\\NuGet.Config"

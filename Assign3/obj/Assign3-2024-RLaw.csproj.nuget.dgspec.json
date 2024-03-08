@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\CPSC1012\\dotnet8-demos\\Programming-Basic\\w-assessment-start-kits\\Assign3-2024-Start\\Assign3-2024-RLaw.csproj": {}
+    "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\maddie-core\\Assign3-2024-Start\\Assign3-2024-RLaw.csproj": {}
   },
   "projects": {
-    "C:\\CPSC1012\\dotnet8-demos\\Programming-Basic\\w-assessment-start-kits\\Assign3-2024-Start\\Assign3-2024-RLaw.csproj": {
+    "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\maddie-core\\Assign3-2024-Start\\Assign3-2024-RLaw.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\CPSC1012\\dotnet8-demos\\Programming-Basic\\w-assessment-start-kits\\Assign3-2024-Start\\Assign3-2024-RLaw.csproj",
+        "projectUniqueName": "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\maddie-core\\Assign3-2024-Start\\Assign3-2024-RLaw.csproj",
         "projectName": "Assign3-2024-RLaw",
-        "projectPath": "C:\\CPSC1012\\dotnet8-demos\\Programming-Basic\\w-assessment-start-kits\\Assign3-2024-Start\\Assign3-2024-RLaw.csproj",
+        "projectPath": "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\maddie-core\\Assign3-2024-Start\\Assign3-2024-RLaw.csproj",
         "packagesPath": "C:\\Users\\Madeline\\.nuget\\packages\\",
-        "outputPath": "C:\\CPSC1012\\dotnet8-demos\\Programming-Basic\\w-assessment-start-kits\\Assign3-2024-Start\\obj\\",
+        "outputPath": "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\maddie-core\\Assign3-2024-Start\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Madeline\\AppData\\Roaming\\NuGet\\NuGet.Config"

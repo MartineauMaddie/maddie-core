@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\CPSC1012\\Interest Calculator Assignment\\ConsoleApp1.csproj",
+      "projectUniqueName": "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\maddie-core\\Interest Calculator Assignment\\ConsoleApp1.csproj",
       "projectName": "ConsoleApp1",
-      "projectPath": "C:\\CPSC1012\\Interest Calculator Assignment\\ConsoleApp1.csproj",
+      "projectPath": "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\maddie-core\\Interest Calculator Assignment\\ConsoleApp1.csproj",
       "packagesPath": "C:\\Users\\Madeline\\.nuget\\packages\\",
-      "outputPath": "C:\\CPSC1012\\Interest Calculator Assignment\\obj\\",
+      "outputPath": "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\maddie-core\\Interest Calculator Assignment\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Madeline\\AppData\\Roaming\\NuGet\\NuGet.Config"
