@@ -1,0 +1,28 @@
+C:\CPSC1012\ConsoleApp2\bin\Debug\net8.0\ConsoleApp2.exe
+C:\CPSC1012\ConsoleApp2\bin\Debug\net8.0\ConsoleApp2.deps.json
+C:\CPSC1012\ConsoleApp2\bin\Debug\net8.0\ConsoleApp2.runtimeconfig.json
+C:\CPSC1012\ConsoleApp2\bin\Debug\net8.0\ConsoleApp2.dll
+C:\CPSC1012\ConsoleApp2\bin\Debug\net8.0\ConsoleApp2.pdb
+C:\CPSC1012\ConsoleApp2\obj\Debug\net8.0\ConsoleApp2.GeneratedMSBuildEditorConfig.editorconfig
+C:\CPSC1012\ConsoleApp2\obj\Debug\net8.0\ConsoleApp2.AssemblyInfoInputs.cache
+C:\CPSC1012\ConsoleApp2\obj\Debug\net8.0\ConsoleApp2.AssemblyInfo.cs
+C:\CPSC1012\ConsoleApp2\obj\Debug\net8.0\ConsoleApp2.csproj.CoreCompileInputs.cache
+C:\CPSC1012\ConsoleApp2\obj\Debug\net8.0\ConsoleApp2.dll
+C:\CPSC1012\ConsoleApp2\obj\Debug\net8.0\refint\ConsoleApp2.dll
+C:\CPSC1012\ConsoleApp2\obj\Debug\net8.0\ConsoleApp2.pdb
+C:\CPSC1012\ConsoleApp2\obj\Debug\net8.0\ConsoleApp2.genruntimeconfig.cache
+C:\CPSC1012\ConsoleApp2\obj\Debug\net8.0\ref\ConsoleApp2.dll
+C:\CPSC1012\Crypto Trading Assignment\bin\Debug\net8.0\ConsoleApp2.exe
+C:\CPSC1012\Crypto Trading Assignment\bin\Debug\net8.0\ConsoleApp2.deps.json
+C:\CPSC1012\Crypto Trading Assignment\bin\Debug\net8.0\ConsoleApp2.runtimeconfig.json
+C:\CPSC1012\Crypto Trading Assignment\bin\Debug\net8.0\ConsoleApp2.dll
+C:\CPSC1012\Crypto Trading Assignment\bin\Debug\net8.0\ConsoleApp2.pdb
+C:\CPSC1012\Crypto Trading Assignment\obj\Debug\net8.0\ConsoleApp2.GeneratedMSBuildEditorConfig.editorconfig
+C:\CPSC1012\Crypto Trading Assignment\obj\Debug\net8.0\ConsoleApp2.AssemblyInfoInputs.cache
+C:\CPSC1012\Crypto Trading Assignment\obj\Debug\net8.0\ConsoleApp2.AssemblyInfo.cs
+C:\CPSC1012\Crypto Trading Assignment\obj\Debug\net8.0\ConsoleApp2.csproj.CoreCompileInputs.cache
+C:\CPSC1012\Crypto Trading Assignment\obj\Debug\net8.0\ConsoleApp2.dll
+C:\CPSC1012\Crypto Trading Assignment\obj\Debug\net8.0\refint\ConsoleApp2.dll
+C:\CPSC1012\Crypto Trading Assignment\obj\Debug\net8.0\ConsoleApp2.pdb
+C:\CPSC1012\Crypto Trading Assignment\obj\Debug\net8.0\ConsoleApp2.genruntimeconfig.cache
+C:\CPSC1012\Crypto Trading Assignment\obj\Debug\net8.0\ref\ConsoleApp2.dll
