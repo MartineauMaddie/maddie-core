@@ -107,55 +107,20 @@ while (goAgain)
         DisplayMainMenu();
         string mainMenuChoice = Prompt("\nEnter a Main Menu Choice: ");
         if (mainMenuChoice == "L")
-            try
-            {
-                // [L]oad Sales File
-                Console.WriteLine("Load Values from File to Memory selected");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"{ex.Message}");
-            }
+            // [L]oad Sales File
+            Console.WriteLine("Load Values from File to Memory selected");
         if (mainMenuChoice == "S")
-            try
-            {
-                // [S]ave Entries to File
-                Console.WriteLine("Save Values from Memory to File selected");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"{ex.Message}");
-            }
+            // [S]ave Entries to File
+            Console.WriteLine("Save Values from Memory to File selected");
         if (mainMenuChoice == "D")
-            try
-            {
-                // [V]iew Entered/Loaded Sales
-                Console.WriteLine("Display Values in Memory selected");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"{ex.Message}");
-            }
+            // [V]iew Entered/Loaded Sales
+            Console.WriteLine("Display Values in Memory selected");
         if (mainMenuChoice == "A")
-            try
-            {
-                // [N]ew Daily Sales Entry
-                Console.WriteLine("Add Value in Memory selected");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"{ex.Message}");
-            }
+            // [N]ew Daily Sales Entry
+            Console.WriteLine("Add Value in Memory selected");
         if (mainMenuChoice == "E")
-            try
-            {
-                // [E]dit Sales Entries
-                Console.WriteLine("Edit Value in Memory selected");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"{ex.Message}");
-            }
+            // [E]dit Sales Entries
+            Console.WriteLine("Edit Value in Memory selected");
         if (mainMenuChoice == "R")
         {
             // [M]onthly Statistics
