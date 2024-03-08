@@ -16,53 +16,56 @@ string[] dates = new string[physicalSize];
 string fileName = "";
 
 bool goAgain = true;
-  while (goAgain)
-  {
-    try
-    {
-      DisplayMainMenu();
-      string mainMenuChoice = Prompt("\nEnter a Main Menu Choice: ").ToUpper();
-      if (mainMenuChoice == "L")
-        logicalSize = LoadFileValuesToMemory(fileName, dates, values);
-      if (mainMenuChoice == "S")
-        SaveMemoryValuesToFile(fileName, dates, values, logicalSize);
-      if (mainMenuChoice == "D")
-        DisplayMemoryValues(dates, values, logicalSize);
-      if (mainMenuChoice == "A")
-        logicalSize = AddMemoryValues(dates, values, logicalSize);
-      if (mainMenuChoice == "E")
-        EditMemoryValues(dates, values, logicalSize);
-      if (mainMenuChoice == "Q")
-      {
-        goAgain = false;
-        throw new Exception("Bye, hope to see you again.");
-      }
-      if (mainMenuChoice == "R")
-      {
-        while (true)
-        {
-          if (logicalSize == 0)
-					  throw new Exception("No entries loaded. Please load a file into memory");
-          DisplayAnalysisMenu();
-          string analysisMenuChoice = Prompt("\nEnter an Analysis Menu Choice: ").ToUpper();
-          if (analysisMenuChoice == "A")
-            FindAverageOfValuesInMemory(values, logicalSize);
-          if (analysisMenuChoice == "H")
-            FindHighestValueInMemory(values, logicalSize);
-          if (analysisMenuChoice == "L")
-            FindLowestValueInMemory(values, logicalSize);
-          if (analysisMenuChoice == "G")
-            GraphValuesInMemory(dates, values, logicalSize);
-          if (analysisMenuChoice == "R")
-            throw new Exception("Returning to Main Menu");
-        }
-      }
-    }
-    catch (Exception ex)
-    {
-      Console.WriteLine($"{ex.Message}");
-    }
-  }
+while (goAgain)
+{
+	try
+	{
+		DisplayMainMenu();
+		string mainMenuChoice = Prompt("\nEnter a Main Menu Choice: ").ToUpper();
+		if (mainMenuChoice == "L")
+			logicalSize = LoadFileValuesToMemory(fileName, dates, values);
+		if (mainMenuChoice == "S")
+			SaveMemoryValuesToFile(fileName, dates, values, logicalSize);
+		if (mainMenuChoice == "D")
+			DisplayMemoryValues(dates, values, logicalSize);
+		if (mainMenuChoice == "A")
+			logicalSize = AddMemoryValues(dates, values, logicalSize);
+		if (mainMenuChoice == "E")
+			EditMemoryValues(dates, values, logicalSize);
+		if (mainMenuChoice == "Q")
+		{
+			goAgain = false;
+			throw new Exception("Bye, hope to see you again.");
+		}
+		if (mainMenuChoice == "R")
+		{
+			while (true)
+			{
+				if (logicalSize == 0)
+					throw new Exception("No entries loaded. Please load a file into memory");
+				DisplayAnalysisMenu();
+				string analysisMenuChoice = Prompt("\nEnter an Analysis Menu Choice: ").ToUpper();
+				if (analysisMenuChoice == "A")
+					double avg = FindAverageOfValuesInMemory(values, logicalSize);
+					Console.WriteLine($"The average of values in memory is {avg}");
+				if (analysisMenuChoice == "H")
+					double max = FindHighestValueInMemory(values, logicalSize);
+					Console.WriteLine($"The highest value in memory is {max}");
+				if (analysisMenuChoice == "L")
+					double min = FindLowestValueInMemory(values, logicalSize);
+					Console.WriteLine($"The lowest value in memory is {min}");
+				if (analysisMenuChoice == "G")
+					GraphValuesInMemory(dates, values, logicalSize);
+				if (analysisMenuChoice == "R")
+					throw new Exception("Returning to Main Menu");
+			}
+		}
+	}
+	catch (Exception ex)
+	{
+		Console.WriteLine($"{ex.Message}");
+	}
+}
 
 void DisplayMainMenu()
 {
@@ -88,10 +91,10 @@ void DisplayAnalysisMenu()
 
 string Prompt(string prompt)
 {
-  string response = "";
-  Console.Write(prompt);
-  response = Console.ReadLine();
-  return response;
+	string response = "";
+	Console.Write(prompt);
+	response = Console.ReadLine();
+	return response;
 }
 
 string GetFileName()
@@ -112,28 +115,28 @@ int LoadFileValuesToMemory(string filename, string[] dates, double[] values)
 	if (!File.Exists(filePath))
 		throw new Exception($"The file {fileName} does not exist.");
 	string[] csvFileInput = File.ReadAllLines(filePath);
-	for(int i = 0; i < csvFileInput.Length; i++)
+	for (int i = 0; i < csvFileInput.Length; i++)
 	{
 		Console.WriteLine($"lineIndex: {i}; line: {csvFileInput[i]}");
 		string[] items = csvFileInput[i].Split(',');
-		for(int j = 0; j < items.Length; j++)
+		for (int j = 0; j < items.Length; j++)
 		{
 			Console.WriteLine($"itemIndex: {j}; item: {items[j]}");
 		}
-		if(i != 0)
+		if (i != 0)
 		{
-		dates[logicalSize] = items[0];
-    values[logicalSize] = double.Parse(items[1]);
-    logicalSize++;
+			dates[logicalSize] = items[0];
+			values[logicalSize] = double.Parse(items[1]);
+			logicalSize++;
 		}
 	}
-  Console.WriteLine($"Load complete. {fileName} has {logicalSize} data entries");
+	Console.WriteLine($"Load complete. {fileName} has {logicalSize} data entries");
 	return logicalSize;
 }
 
 void DisplayMemoryValues(string[] dates, double[] values, int logicalSize)
 {
-	if(logicalSize == 0)
+	if (logicalSize == 0)
 		throw new Exception($"No Entries loaded. Please load a file to memory or add a value in memory");
 	Console.Clear();
 	Console.WriteLine($"\nCurrent Loaded Entries:  {logicalSize}\n");
@@ -146,22 +149,45 @@ void DisplayMemoryValues(string[] dates, double[] values, int logicalSize)
 
 double FindHighestValueInMemory(double[] values, int logicalSize)
 {
-	Console.WriteLine("Not Implemented Yet");
-	return 0;
-	//TODO: Replace this code with yours to implement this function.
+	if (logicalSize == 0)
+		throw new Exception($"No Entries loaded. Please load a file to memory or add a value in memory");
+	Console.Clear();
+	Console.WriteLine($"\nCurrent Loaded Entries:  {logicalSize}\n");
+	double max = values[0];
+	for (int i = 0; i < logicalSize; i++)
+	{
+		if (values[i] > max)
+			max = values[i];
+	}
+	return max;
 }
 
 double FindLowestValueInMemory(double[] values, int logicalSize)
 {
-	Console.WriteLine("Not Implemented Yet");
-	return 0;
-	//TODO: Replace this code with yours to implement this function.
+	if (logicalSize == 0)
+		throw new Exception($"No Entries loaded. Please load a file to memory or add a value in memory");
+	Console.Clear();
+	Console.WriteLine($"\nCurrent Loaded Entries:  {logicalSize}\n");
+	double min = values[0];
+	for (int i = 0; i < logicalSize; i++)
+	{
+		if (values[i] < min)
+			min = values[i];
+	}
+	return min;
 }
 
-void FindAverageOfValuesInMemory(double[] values, int logicalSize)
+double FindAverageOfValuesInMemory(double[] values, int logicalSize)
 {
-	Console.WriteLine("Not Implemented Yet");
-	//TODO: Replace this code with yours to implement this function.
+	if (logicalSize == 0)
+		throw new Exception($"No Entries loaded. Please load a file to memory or add a value in memory");
+	Console.Clear();
+	Console.WriteLine($"\nCurrent Loaded Entries:  {logicalSize}\n");
+	double sum = 0;
+	for (int i = 0; i < logicalSize; i++)
+		sum = sum + values[i];
+		//sum += values[i];
+	return sum / logicalSize;
 }
 
 void SaveMemoryValuesToFile(string filename, string[] dates, double[] values, int logicalSize)
