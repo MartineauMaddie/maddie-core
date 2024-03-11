@@ -115,16 +115,6 @@ string Prompt(string prompt)
 	return myString;
 }
 
-// string GetFileName()
-// {
-// 	string fileName = "";
-// 	do
-// 	{
-// 		fileName = Prompt("Enter file name including .csv or .txt: ");
-// 	} while (string.IsNullOrWhiteSpace(fileName));
-// 	return fileName;
-// }
-
 int LoadFileValuesToMemory(string[] dates, double[] values)
 {
 	string fileName = Prompt("Enter file name including .csv or .txt: ");
@@ -162,6 +152,45 @@ void DisplayMemoryValues(string[] dates, double[] values, int logicalSize)
 	}
 }
 
+void SaveMemoryValuesToFile(string filename, string[] dates, double[] values, int logicalSize)
+{
+	Console.WriteLine("Not Implemented Yet");
+	//TODO: Replace this code with yours to implement this function.
+}
+
+// Demo-1-Writing to a file with arrays
+// void Demo1()
+// {
+//   try
+//   {
+//     const string csvFileName = "Data.dat";
+//     int arraySize = 10;
+//     string[] csvLines = new string[arraySize];
+//     csvLines[0] = "first,line,of,array,csv";
+//     csvLines[1] = "second,line,of,array,csv";
+//     csvLines[9] = "hi";
+//     File.WriteAllLines(csvFileName, csvLines);
+//     Console.WriteLine($"Data successfully written to file at: {Path.GetFullPath(csvFileName)}");
+//   }
+//   catch (Exception ex)
+//   {
+//     Console.WriteLine($"Exception in demo1: {ex.Message}");
+//   }
+// }
+
+int AddMemoryValues(string[] dates, double[] values, int logicalSize)
+{
+	Console.WriteLine("Not Implemented Yet");
+	return 0;
+	//TODO: Replace this code with yours to implement this function.
+}
+
+void EditMemoryValues(string[] dates, double[] values, int logicalSize)
+{
+	Console.WriteLine("Not Implemented Yet");
+	//TODO: Replace this code with yours to implement this function.
+}
+
 double FindHighestValueInMemory(double[] values, int logicalSize)
 {
 	double max = values[0];
@@ -192,25 +221,6 @@ double FindAverageOfValuesInMemory(double[] values, int logicalSize)
 	//sum += values[i];
 	double avg = sum / logicalSize;
 	return avg;
-}
-
-void SaveMemoryValuesToFile(string filename, string[] dates, double[] values, int logicalSize)
-{
-	Console.WriteLine("Not Implemented Yet");
-	//TODO: Replace this code with yours to implement this function.
-}
-
-int AddMemoryValues(string[] dates, double[] values, int logicalSize)
-{
-	Console.WriteLine("Not Implemented Yet");
-	return 0;
-	//TODO: Replace this code with yours to implement this function.
-}
-
-void EditMemoryValues(string[] dates, double[] values, int logicalSize)
-{
-	Console.WriteLine("Not Implemented Yet");
-	//TODO: Replace this code with yours to implement this function.
 }
 
 void GraphValuesInMemory(string[] dates, double[] values, int logicalSize)
