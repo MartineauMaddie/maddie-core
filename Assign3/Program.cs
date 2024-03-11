@@ -85,32 +85,35 @@ void DisplayAnalysisMenu()
 	Console.WriteLine("R) Return to Main Menu");
 }
 
+// string Prompt(string prompt)
+// {
+// 	string response = "";
+// 	Console.Write(prompt);
+// 	response = Console.ReadLine();
+// 	return response;
+// }
+
 string Prompt(string prompt)
 {
-	string response = "";
-	Console.Write(prompt);
-	response = Console.ReadLine();
-	return response;
+	bool inValidInput = true;
+	string myString = "";
+	while (inValidInput)
+	{
+		try
+		{
+			Console.Write(prompt);
+			myString = Console.ReadLine().Trim();
+			if (string.IsNullOrWhiteSpace(myString))
+				throw new Exception($"Empty Input: Please enter something.");
+			inValidInput = false;
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine(ex.Message);
+		}
+	}
+	return myString;
 }
-
-// string Prompt(string prompt);
-// bool inValidInput = true;
-// string myString = "";
-// while (inValidInput)
-// {
-// 	try
-// 	{
-// 		Console.Write(prompt);
-// 		myString = Console.ReadLine().Trim();
-// 		if (string.IsNullOrWhiteSpace(myString))
-// 			throw new Exception($"Empty Input: Please enter something.");
-// 		inValidInput = false;
-// 	}
-// 	catch (Exception ex)
-// 	{
-// 		Console.WriteLine(ex.Message);
-// 	}
-// }
 
 // string GetFileName()
 // {
