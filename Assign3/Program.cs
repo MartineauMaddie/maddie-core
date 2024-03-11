@@ -4,7 +4,9 @@
 // sales for an entire month.
 int physicalSize = 31;
 int logicalSize = 0;
-
+double max;
+double min;
+double avg;
 // TODO: create a double array named 'values', use the max size constant you declared
 // above to specify the physical size of the array.
 double[] values = new double[physicalSize];
@@ -23,7 +25,7 @@ while (goAgain)
 		DisplayMainMenu();
 		string mainMenuChoice = Prompt("\nEnter a Main Menu Choice: ").ToUpper();
 		if (mainMenuChoice == "L")
-			logicalSize = LoadFileValuesToMemory(fileName, dates, values);
+			logicalSize = LoadFileValuesToMemory(dates, values);
 		if (mainMenuChoice == "S")
 			SaveMemoryValuesToFile(fileName, dates, values, logicalSize);
 		if (mainMenuChoice == "D")
@@ -46,14 +48,14 @@ while (goAgain)
 				DisplayAnalysisMenu();
 				string analysisMenuChoice = Prompt("\nEnter an Analysis Menu Choice: ").ToUpper();
 				if (analysisMenuChoice == "A")
-					double avg = FindAverageOfValuesInMemory(values, logicalSize);
-				Console.WriteLine($"The average of values in memory is {avg}");
+					FindAverageOfValuesInMemory(values, logicalSize);
+				//Console.WriteLine($"The average of values in memory is {avg}");
 				if (analysisMenuChoice == "H")
-					double max = FindHighestValueInMemory(values, logicalSize);
-				Console.WriteLine($"The highest value in memory is {max}");
+					max = FindHighestValueInMemory(values, logicalSize);
+				//Console.WriteLine($"The highest value in memory is {max}");
 				if (analysisMenuChoice == "L")
-					double min = FindLowestValueInMemory(values, logicalSize);
-				Console.WriteLine($"The lowest value in memory is {min}");
+					min = FindLowestValueInMemory(values, logicalSize);
+				//Console.WriteLine($"The lowest value in memory is {min}");
 				if (analysisMenuChoice == "G")
 					GraphValuesInMemory(dates, values, logicalSize);
 				if (analysisMenuChoice == "R")
@@ -89,42 +91,42 @@ void DisplayAnalysisMenu()
 	Console.WriteLine("R) Return to Main Menu");
 }
 
-// string Prompt(string prompt)
+string Prompt(string prompt)
+{
+	string response = "";
+	Console.Write(prompt);
+	response = Console.ReadLine();
+	return response;
+}
+
+// string Prompt(string prompt);
+// bool inValidInput = true;
+// string myString = "";
+// while (inValidInput)
 // {
-// 	string response = "";
-// 	Console.Write(prompt);
-// 	response = Console.ReadLine();
-// 	return response;
+// 	try
+// 	{
+// 		Console.Write(prompt);
+// 		myString = Console.ReadLine().Trim();
+// 		if (string.IsNullOrWhiteSpace(myString))
+// 			throw new Exception($"Empty Input: Please enter something.");
+// 		inValidInput = false;
+// 	}
+// 	catch (Exception ex)
+// 	{
+// 		Console.WriteLine(ex.Message);
+// 	}
 // }
 
-string Prompt(string prompt)
-bool inValidInput = true;
-string myString = "";
-while (inValidInput)
-{
-	try
-	{
-		Console.Write(prompt);
-		myString = Console.ReadLine().Trim();
-		if (string.IsNullOrWhiteSpace(myString))
-			throw new Exception($"Empty Input: Please enter something.");
-		inValidInput = false;
-	}
-	catch (Exception ex)
-	{
-		Console.WriteLine(ex.Message);
-	}
-}
-
-string GetFileName()
-{
-	string fileName = "";
-	do
-	{
-		fileName = Prompt("Enter file name including .csv or .txt: ");
-	} while (string.IsNullOrWhiteSpace(fileName));
-	return fileName;
-}
+// string GetFileName()
+// {
+// 	string fileName = "";
+// 	do
+// 	{
+// 		fileName = Prompt("Enter file name including .csv or .txt: ");
+// 	} while (string.IsNullOrWhiteSpace(fileName));
+// 	return fileName;
+// }
 
 int LoadFileValuesToMemory(string[] dates, double[] values)
 {
@@ -206,7 +208,8 @@ double FindAverageOfValuesInMemory(double[] values, int logicalSize)
 	for (int i = 0; i < logicalSize; i++)
 		sum = sum + values[i];
 	//sum += values[i];
-	return sum / logicalSize;
+	avg = sum / logicalSize;
+	return avg;
 }
 
 void SaveMemoryValuesToFile(string filename, string[] dates, double[] values, int logicalSize)

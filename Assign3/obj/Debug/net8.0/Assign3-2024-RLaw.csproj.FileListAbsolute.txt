@@ -3,3 +3,13 @@ C:\Users\Madeline\OneDrive - NAIT\Documents\maddie-core\Assign3\obj\Debug\net8.0
 C:\Users\Madeline\OneDrive - NAIT\Documents\maddie-core\Assign3\obj\Debug\net8.0\Assign3-2024-RLaw.AssemblyInfo.cs
 C:\Users\Madeline\OneDrive - NAIT\Documents\maddie-core\Assign3\obj\Debug\net8.0\Assign3-2024-RLaw.csproj.CoreCompileInputs.cache
 C:\Users\Madeline\OneDrive - NAIT\Documents\maddie-core\Assign3\obj\Debug\net8.0\Assign3-2024-RLaw.sourcelink.json
+C:\Users\Madeline\OneDrive - NAIT\Documents\maddie-core\Assign3\bin\Debug\net8.0\Assign3-2024-RLaw.exe
+C:\Users\Madeline\OneDrive - NAIT\Documents\maddie-core\Assign3\bin\Debug\net8.0\Assign3-2024-RLaw.deps.json
+C:\Users\Madeline\OneDrive - NAIT\Documents\maddie-core\Assign3\bin\Debug\net8.0\Assign3-2024-RLaw.runtimeconfig.json
+C:\Users\Madeline\OneDrive - NAIT\Documents\maddie-core\Assign3\bin\Debug\net8.0\Assign3-2024-RLaw.dll
+C:\Users\Madeline\OneDrive - NAIT\Documents\maddie-core\Assign3\bin\Debug\net8.0\Assign3-2024-RLaw.pdb
+C:\Users\Madeline\OneDrive - NAIT\Documents\maddie-core\Assign3\obj\Debug\net8.0\Assign3-2024-RLaw.dll
+C:\Users\Madeline\OneDrive - NAIT\Documents\maddie-core\Assign3\obj\Debug\net8.0\refint\Assign3-2024-RLaw.dll
+C:\Users\Madeline\OneDrive - NAIT\Documents\maddie-core\Assign3\obj\Debug\net8.0\Assign3-2024-RLaw.pdb
+C:\Users\Madeline\OneDrive - NAIT\Documents\maddie-core\Assign3\obj\Debug\net8.0\Assign3-2024-RLaw.genruntimeconfig.cache
+C:\Users\Madeline\OneDrive - NAIT\Documents\maddie-core\Assign3\obj\Debug\net8.0\ref\Assign3-2024-RLaw.dll
