@@ -4,9 +4,6 @@
 // sales for an entire month.
 int physicalSize = 31;
 int logicalSize = 0;
-double max;
-double min;
-double avg;
 // TODO: create a double array named 'values', use the max size constant you declared
 // above to specify the physical size of the array.
 double[] values = new double[physicalSize];
@@ -48,14 +45,20 @@ while (goAgain)
 				DisplayAnalysisMenu();
 				string analysisMenuChoice = Prompt("\nEnter an Analysis Menu Choice: ").ToUpper();
 				if (analysisMenuChoice == "A")
-					FindAverageOfValuesInMemory(values, logicalSize);
-				//Console.WriteLine($"The average of values in memory is {avg}");
+				{
+					double avg = FindAverageOfValuesInMemory(values, logicalSize);
+					Console.WriteLine($"The average of values in memory is {avg}");
+				}
 				if (analysisMenuChoice == "H")
-					max = FindHighestValueInMemory(values, logicalSize);
-				//Console.WriteLine($"The highest value in memory is {max}");
+				{
+					double max = FindHighestValueInMemory(values, logicalSize);
+					Console.WriteLine($"The highest value in memory is {max}");
+				}
 				if (analysisMenuChoice == "L")
-					min = FindLowestValueInMemory(values, logicalSize);
-				//Console.WriteLine($"The lowest value in memory is {min}");
+				{
+					double min = FindLowestValueInMemory(values, logicalSize);
+					Console.WriteLine($"The lowest value in memory is {min}");
+				}
 				if (analysisMenuChoice == "G")
 					GraphValuesInMemory(dates, values, logicalSize);
 				if (analysisMenuChoice == "R")
@@ -157,10 +160,7 @@ int LoadFileValuesToMemory(string[] dates, double[] values)
 
 void DisplayMemoryValues(string[] dates, double[] values, int logicalSize)
 {
-	if (logicalSize == 0)
-		throw new Exception($"No Entries loaded. Please load a file to memory or add a value in memory");
-	Console.Clear();
-	Console.WriteLine($"\nCurrent Loaded Entries:  {logicalSize}\n");
+	Console.WriteLine($"\nCurrent Loaded Entries: {logicalSize}\n");
 	Console.WriteLine("{0,-15} {1,10:}\n", "Date", "Value");
 	for (int i = 0; i < logicalSize; i++)
 	{
@@ -170,10 +170,6 @@ void DisplayMemoryValues(string[] dates, double[] values, int logicalSize)
 
 double FindHighestValueInMemory(double[] values, int logicalSize)
 {
-	if (logicalSize == 0)
-		throw new Exception($"No Entries loaded. Please load a file to memory or add a value in memory");
-	Console.Clear();
-	Console.WriteLine($"\nCurrent Loaded Entries:  {logicalSize}\n");
 	double max = values[0];
 	for (int i = 0; i < logicalSize; i++)
 	{
@@ -185,10 +181,6 @@ double FindHighestValueInMemory(double[] values, int logicalSize)
 
 double FindLowestValueInMemory(double[] values, int logicalSize)
 {
-	if (logicalSize == 0)
-		throw new Exception($"No Entries loaded. Please load a file to memory or add a value in memory");
-	Console.Clear();
-	Console.WriteLine($"\nCurrent Loaded Entries:  {logicalSize}\n");
 	double min = values[0];
 	for (int i = 0; i < logicalSize; i++)
 	{
@@ -200,15 +192,11 @@ double FindLowestValueInMemory(double[] values, int logicalSize)
 
 double FindAverageOfValuesInMemory(double[] values, int logicalSize)
 {
-	if (logicalSize == 0)
-		throw new Exception($"No Entries loaded. Please load a file to memory or add a value in memory");
-	Console.Clear();
-	Console.WriteLine($"\nCurrent Loaded Entries:  {logicalSize}\n");
 	double sum = 0;
 	for (int i = 0; i < logicalSize; i++)
 		sum = sum + values[i];
 	//sum += values[i];
-	avg = sum / logicalSize;
+	double avg = sum / logicalSize;
 	return avg;
 }
 
