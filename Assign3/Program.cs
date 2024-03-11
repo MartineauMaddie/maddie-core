@@ -1,17 +1,8 @@
 ﻿
-// TODO: declare a constant to represent the max size of the sales
-// and dates arrays. The arrays must be large enough to store
-// sales for an entire month.
 int physicalSize = 31;
 int logicalSize = 0;
-// TODO: create a double array named 'values', use the max size constant you declared
-// above to specify the physical size of the array.
 double[] values = new double[physicalSize];
-
-// TODO: create a string array named 'dates', use the max size constant you declared
-// above to specify the physical size of the array.
 string[] dates = new string[physicalSize];
-
 string fileName = "";
 
 bool goAgain = true;
