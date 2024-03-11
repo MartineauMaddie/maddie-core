@@ -47,13 +47,13 @@ while (goAgain)
 				string analysisMenuChoice = Prompt("\nEnter an Analysis Menu Choice: ").ToUpper();
 				if (analysisMenuChoice == "A")
 					double avg = FindAverageOfValuesInMemory(values, logicalSize);
-					Console.WriteLine($"The average of values in memory is {avg}");
+				Console.WriteLine($"The average of values in memory is {avg}");
 				if (analysisMenuChoice == "H")
 					double max = FindHighestValueInMemory(values, logicalSize);
-					Console.WriteLine($"The highest value in memory is {max}");
+				Console.WriteLine($"The highest value in memory is {max}");
 				if (analysisMenuChoice == "L")
 					double min = FindLowestValueInMemory(values, logicalSize);
-					Console.WriteLine($"The lowest value in memory is {min}");
+				Console.WriteLine($"The lowest value in memory is {min}");
 				if (analysisMenuChoice == "G")
 					GraphValuesInMemory(dates, values, logicalSize);
 				if (analysisMenuChoice == "R")
@@ -89,12 +89,31 @@ void DisplayAnalysisMenu()
 	Console.WriteLine("R) Return to Main Menu");
 }
 
+// string Prompt(string prompt)
+// {
+// 	string response = "";
+// 	Console.Write(prompt);
+// 	response = Console.ReadLine();
+// 	return response;
+// }
+
 string Prompt(string prompt)
+bool inValidInput = true;
+string myString = "";
+while (inValidInput)
 {
-	string response = "";
-	Console.Write(prompt);
-	response = Console.ReadLine();
-	return response;
+	try
+	{
+		Console.Write(prompt);
+		myString = Console.ReadLine().Trim();
+		if (string.IsNullOrWhiteSpace(myString))
+			throw new Exception($"Empty Input: Please enter something.");
+		inValidInput = false;
+	}
+	catch (Exception ex)
+	{
+		Console.WriteLine(ex.Message);
+	}
 }
 
 string GetFileName()
@@ -107,9 +126,9 @@ string GetFileName()
 	return fileName;
 }
 
-int LoadFileValuesToMemory(string filename, string[] dates, double[] values)
+int LoadFileValuesToMemory(string[] dates, double[] values)
 {
-	string fileName = GetFileName();
+	string fileName = Prompt("Enter file name including .csv or .txt: ");
 	int logicalSize = 0;
 	string filePath = $"./data/{fileName}";
 	if (!File.Exists(filePath))
@@ -186,7 +205,7 @@ double FindAverageOfValuesInMemory(double[] values, int logicalSize)
 	double sum = 0;
 	for (int i = 0; i < logicalSize; i++)
 		sum = sum + values[i];
-		//sum += values[i];
+	//sum += values[i];
 	return sum / logicalSize;
 }
 
