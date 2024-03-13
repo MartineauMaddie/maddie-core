@@ -115,6 +115,26 @@ string Prompt(string prompt)
 	return myString;
 }
 
+string PromptDate(string prompt)
+{
+	bool inValidInput = true;
+	DateTime date = DateTime.Today;
+	while (inValidInput)
+	{
+		try
+		{
+			Console.Write(prompt);
+			date = DateTime.Parse(Console.ReadLine());
+			inValidInput = false;
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine(ex.Message);
+		}
+	}
+	return date.ToString("MM-dd-yyyy");
+}
+
 int LoadFileValuesToMemory(string[] dates, double[] values)
 {
 	string fileName = Prompt("Enter file name including .csv or .txt: ");
@@ -155,7 +175,7 @@ void DisplayMemoryValues(string[] dates, double[] values, int logicalSize)
 void SaveMemoryValuesToFile(string filename, string[] dates, double[] values, int logicalSize)
 {
 	Console.WriteLine("Not Implemented Yet");
-	//TODO: Replace this code with yours to implement this function.
+
 }
 
 // Demo-1-Writing to a file with arrays
@@ -184,6 +204,24 @@ int AddMemoryValues(string[] dates, double[] values, int logicalSize)
 	return 0;
 	//TODO: Replace this code with yours to implement this function.
 }
+
+// int AddMemoryValues(string[] dates, double[] values, int logicalSize)
+// {
+// 	double value = 0.0;
+// 	string dateString = "";
+// 	dateString = PromptDate("Enter date format mm-dd-yyyy (eg 11-23-2023): ");
+// 	bool found = false;
+// 	for (int i = 0; i < logicalSize; i++)
+// 		if (dates[i].Equals(dateString))
+// 			found = true;
+// 	if (found == true)
+// 		throw new Exception($"{dateString} is already in memory. Edit entry instead.");
+// 	value = PromptDoubleBetweenMinMax($"Enter a double value ", 0.0, 1000.0);
+// 	dates[logicalSize] = dateString;
+// 	values[logicalSize] = value;
+// 	logicalSize++;
+// 	return logicalSize;
+// }
 
 void EditMemoryValues(string[] dates, double[] values, int logicalSize)
 {
@@ -218,7 +256,6 @@ double FindAverageOfValuesInMemory(double[] values, int logicalSize)
 	double sum = 0;
 	for (int i = 0; i < logicalSize; i++)
 		sum = sum + values[i];
-	//sum += values[i];
 	double avg = sum / logicalSize;
 	return avg;
 }
@@ -227,4 +264,26 @@ void GraphValuesInMemory(string[] dates, double[] values, int logicalSize)
 {
 	Console.WriteLine("Not Implemented Yet");
 	//TODO: Replace this code with yours to implement this function.
+}
+
+double PromptDoubleBetweenMinMax(String prompt, double min, double max)
+{
+	bool invalidInput = true;
+	double num = 0;
+	while (invalidInput)
+	{
+		try
+		{
+			Console.WriteLine($"{prompt} between {min} and {max}: ");
+			num = double.Parse(Console.ReadLine());
+			if (num < min || num > max)
+				throw new Exception($"Invalid. Must be between {min} and {max}.");
+			invalidInput = false;
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine(ex.Message);
+		}
+	}
+	return num;
 }
