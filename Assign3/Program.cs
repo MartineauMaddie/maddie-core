@@ -276,4 +276,4 @@ for (int i = 0; i < logicalSize; i++)
 
 }
 // 3 for loops 
-
+// look into substrings
