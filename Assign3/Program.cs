@@ -126,6 +126,25 @@ string PromptDate(string prompt)
 	return date.ToString("MM-dd-yyyy");
 }
 
+double PromptInt(string prompt)
+{
+	int num = 0;
+	while (true)
+	{
+		try
+		{
+			Console.Write(prompt);
+			num = int.Parse(Console.ReadLine());
+			break;
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine(ex.Message);
+		}
+	}
+	return num;
+}
+
 double PromptDoubleBetweenMinMax(string prompt, double min, double max)
 {
 	double num = 0;
@@ -243,6 +262,13 @@ double FindHighestValueInMemory(double[] values, int logicalSize)
 		if (values[i] > max)
 			max = values[i];
 	}
+	double maxIndex = 0;
+	for (int i = 0; i < logicalSize; i++)
+	{
+		if (values[i].Equals(max))
+			maxIndex = i;
+	}
+	Console.WriteLine($"The index of the highest value is {maxIndex}");
 	return max;
 }
 
@@ -254,6 +280,13 @@ double FindLowestValueInMemory(double[] values, int logicalSize)
 		if (values[i] < min)
 			min = values[i];
 	}
+	double minIndex = 0;
+	for (int i = 0; i < logicalSize; i++)
+	{
+		if (values[i].Equals(min))
+			minIndex = i;
+	}
+	Console.WriteLine($"The index of the lowest value is {minIndex}");
 	return min;
 }
 
@@ -275,5 +308,10 @@ for (int i = 0; i < logicalSize; i++)
 {
 
 }
-// 3 for loops 
+// 3 nested for loops 
 // look into substrings
+// make one for loop to make the y axis with input for max sales down to 0
+// make one step to write the x axis with 31 days starting at 1 properly formatted
+// make a for loop to get the highest value in memory and then place at appropriate day
+// and then work down the y axis getting all descending values until 0 
+// use substrings to pull the day out of the dates string
