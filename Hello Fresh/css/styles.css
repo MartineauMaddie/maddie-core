@@ -1,0 +1,99 @@
+/* include all your math calculations as comments. Please be descriptive: ie Padding 3px X 5 = 15px */
+
+
+.container {
+    width: 960px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+body {
+    background-color: #e9d0ad;
+    padding: 24px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #623719;
+}
+h1,
+h2,
+h3,
+li {
+    font-size: 24px;
+    text-align: center;
+    padding: 12px 0;
+}
+
+h3,
+li {
+    font-size: 20px;
+}
+
+header {
+    margin-bottom: 40px;
+}
+
+main section {
+    background-color: #dda87a;
+}
+
+li,
+main section section {
+    background-color: #f5c58e;
+    border: 2px solid #623719;
+    padding: 12px;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+nav ul li {
+
+    /* 
+    padding 12px *  6 = 72
+    border  2px  *  6 = 12
+    gap     12px *  2 = 24
+    72 + 12 + 24      = 108
+    960 - 108         = 852 px available
+    852 / 3           = 284
+    */
+    width: 284px;
+}
+
+.marketinfo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 30px;
+}
+.marketinfo section {
+    /* 
+    padding 12px * 4 = 48
+    border  2px  * 4 = 8
+    gap     24px * 1 = 24
+    48 + 8 + 24      = 80
+    960 - 80         = 880 px available
+    880 / 2          = 440
+    */
+    width: 440px;
+}
+
+.recipes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 30px;
+}
+
+.recipes section {
+    /* 
+    padding 12px * 6 = 72
+    border  2px  * 6 = 12
+    gap     24px * 2 = 48
+    72 + 12 + 48     = 132
+    960 - 132        = 828 px available
+    828 / 3          = 276
+    */
+    width: 276px;
+}
+
