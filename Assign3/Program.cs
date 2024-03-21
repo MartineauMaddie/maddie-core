@@ -126,24 +126,24 @@ string PromptDate(string prompt)
 	return date.ToString("MM-dd-yyyy");
 }
 
-double PromptInt(string prompt)
-{
-	int num = 0;
-	while (true)
-	{
-		try
-		{
-			Console.Write(prompt);
-			num = int.Parse(Console.ReadLine());
-			break;
-		}
-		catch (Exception ex)
-		{
-			Console.WriteLine(ex.Message);
-		}
-	}
-	return num;
-}
+// double PromptInt(string prompt)
+// {
+// 	int num = 0;
+// 	while (true)
+// 	{
+// 		try
+// 		{
+// 			Console.Write(prompt);
+// 			num = int.Parse(Console.ReadLine());
+// 			break;
+// 		}
+// 		catch (Exception ex)
+// 		{
+// 			Console.WriteLine(ex.Message);
+// 		}
+// 	}
+// 	return num;
+// }
 
 double PromptDoubleBetweenMinMax(string prompt, double min, double max)
 {
