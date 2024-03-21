@@ -1,5 +1,41 @@
-/* include all your math calculations as comments. Please be descriptive: ie Padding 3px X 5 = 15px */
 
+/* .chunk {
+    width: 15em;
+    border: 1px solid #333;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: rgb(230, 230, 230);
+}
+
+.step {
+    width: 12em;
+    padding: 4px;
+    border-radius: 10px;
+    background-color: rgb(230, 230, 230);
+    font-weight: 600;
+    font-size: 18px;
+    color: rgb(220, 1, 1);
+}
+.opt {
+    width: 18em;
+    padding: 12px;
+    border-radius: 0 0 10px 10px;
+    background-color: rgb(220, 0, 0);
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+}
+
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 2rem;
+}
+.container .chunk {
+    flex: 32%;
+} */
 
 .container {
     width: 960px;
