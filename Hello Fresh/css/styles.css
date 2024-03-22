@@ -2,11 +2,11 @@
 .container {
     width: 965px;
     margin: 0 auto;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
 body {
-    background-color: #8d7b61;
+    background-color: #d8d8d8;
     padding: 24px 0;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
@@ -22,6 +22,10 @@ body {
     margin-bottom: -140px;
 }
 
+.foreword h2 {
+    margin-bottom: 5px;
+}
+
 .foreword h3 {
     margin-bottom: 10px;
 }
@@ -33,12 +37,20 @@ body {
     margin-top: 20px;
 }
 
+.foreword img {
+    display: block;
+    float:inline-start;
+    margin: 5px;
+    width: 14%;
+}
+
 .recipe ul {
     padding: 0px 30px 0 30px ;
 }
 
 li {
     list-style: disc ;
+    padding: 2px;
 }
 
 li::marker {
@@ -50,26 +62,25 @@ li::marker {
     color: rgb(200, 0, 0);
     margin-top: 10px;
     padding: 0px 15px 0 15px ;
+    font-weight: bold;
 }
 
 .recipe {
     display: flex;
     flex-wrap: wrap;
-    gap: 32px;
+    gap: 18px;
     padding: 20px;
 }
 
 .recipe section {
-    width: 31%;
+    width: 32%;
     background-color: #eeeeee;
     border-radius: 15px;
-    /* padding: 8px; */
 }
 
 .recipe p {
     background-color: rgb(200, 0, 0);
     border-radius: 0 0 15px 15px;
-    /* margin: 0 -10px -10px -10px; */
     padding: 10px;
     color: white;
     font-size: small;
@@ -80,18 +91,17 @@ li::marker {
     padding-bottom: 25px;
 }
 
-
-img {
+.recipe img {
     display: block;
     width: 100%;
     border-radius: 15px 15px 0 0;
     height: 185px;
 }
 
-p img {
+.recipe p img {
     display: block;
-    height: 15%;
-    width: 15%;
+    height: 14%;
+    width: 14%;
     border-radius: 0%;
     float:inline-start;
     margin: 5px;
