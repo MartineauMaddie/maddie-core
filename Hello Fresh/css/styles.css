@@ -15,7 +15,7 @@ body {
     display: flex;
     color: white;
     flex-wrap: wrap;
-    background-color: rgb(200, 0, 0);
+    background-color: #AA1420;
     gap: 14px;
     padding: 20px 20px 150px 20px;
     border-radius: 15px;
@@ -54,12 +54,12 @@ li {
 }
 
 li::marker {
-    color: rgb(200, 0, 0);
+    color: #b94236;
     font-weight: 400;
 }
 
 .recipe h3 {
-    color: rgb(200, 0, 0);
+    color: #a82f31;
     margin-top: 10px;
     padding: 0px 15px 0 15px ;
     font-weight: bold;
@@ -74,12 +74,12 @@ li::marker {
 
 .recipe section {
     width: 32%;
-    background-color: #eeeeee;
+    background-color: #fcfdf8;
     border-radius: 15px;
 }
 
 .recipe p {
-    background-color: rgb(200, 0, 0);
+    background-color: #AA1420;
     border-radius: 0 0 15px 15px;
     padding: 10px;
     color: white;

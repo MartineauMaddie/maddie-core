@@ -126,24 +126,24 @@ string PromptDate(string prompt)
 	return date.ToString("MM-dd-yyyy");
 }
 
-// double PromptInt(string prompt)
-// {
-// 	int num = 0;
-// 	while (true)
-// 	{
-// 		try
-// 		{
-// 			Console.Write(prompt);
-// 			num = int.Parse(Console.ReadLine());
-// 			break;
-// 		}
-// 		catch (Exception ex)
-// 		{
-// 			Console.WriteLine(ex.Message);
-// 		}
-// 	}
-// 	return num;
-// }
+double PromptInt(string prompt)
+{
+	int num = 0;
+	while (true)
+	{
+		try
+		{
+			Console.Write(prompt);
+			num = int.Parse(Console.ReadLine());
+			break;
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine(ex.Message);
+		}
+	}
+	return num;
+}
 
 double PromptDoubleBetweenMinMax(string prompt, double min, double max)
 {
@@ -168,7 +168,7 @@ double PromptDoubleBetweenMinMax(string prompt, double min, double max)
 
 void DisplayMemoryValues(string[] dates, double[] values, int logicalSize)
 {
-	Console.WriteLine($"\nCurrent Loaded Entries: {logicalSize}\n");
+	Console.WriteLine($"\nThere are {logicalSize} Loaded Entries.\n");
 	Console.WriteLine("{0,-15} {1,10:}\n", "Date", "Value");
 	for (int i = 0; i < logicalSize; i++)
 	{
@@ -178,7 +178,7 @@ void DisplayMemoryValues(string[] dates, double[] values, int logicalSize)
 
 int LoadFileValuesToMemory(string[] dates, double[] values)
 {
-	string fileName = Prompt("Enter file name including .csv or .txt: ");
+	string fileName = Prompt("Enter file name with extension .csv or .txt: ");
 	int logicalSize = 0;
 	string filePath = $"./data/{fileName}";
 	if (!File.Exists(filePath))
@@ -186,7 +186,6 @@ int LoadFileValuesToMemory(string[] dates, double[] values)
 	string[] csvFileInput = File.ReadAllLines(filePath);
 	for (int i = 0; i < csvFileInput.Length; i++)
 	{
-		Console.WriteLine($"lineIndex: {i}; line: {csvFileInput[i]}");
 		string[] items = csvFileInput[i].Split(',');
 		if (i != 0)
 		{
@@ -195,36 +194,40 @@ int LoadFileValuesToMemory(string[] dates, double[] values)
 			logicalSize++;
 		}
 	}
-	Console.WriteLine($"Load complete. {fileName} has {logicalSize} data entries");
+	Console.WriteLine($"Load complete. {fileName} has {logicalSize} data entries.");
 	return logicalSize;
 }
 
 void SaveMemoryValuesToFile(string filename, string[] dates, double[] values, int logicalSize)
 {
-	//Create one array using the csv (comma separated values) 
-	//info from the two parallel arrays.
-	string fileName = Prompt("Enter file name including .csv or .txt: ");
-	string[] csvLines = new string[logicalSize];
-	for (int i = 0; i < logicalSize; i++)
+	string fileName = Prompt("Enter file name with extension .csv or .txt: ");
+	string filePath = $"./data/{fileName}";
+	if (logicalSize == 0)
+		throw new Exception("No entries loaded. Please load a file into memory or add an entry.");
+	if (logicalSize > 1)
+		Array.Sort(dates, values, 0, logicalSize);
+	string[] csvLines = new string[logicalSize + 1];
+	csvLines[0] = "dates,values";
+	for (int i = 1; i <= logicalSize; i++)
 	{
-		csvLines[i] = dates[i] + "," + values[i].ToString();
+		csvLines[i] = dates[i-1] + "," + values[i-1].ToString();
 	}
-	//Write the one array to a csv file line by line (each line is an element in the array).
-	File.WriteAllLines(fileName, csvLines);
+	File.WriteAllLines(filePath, csvLines);
+	Console.WriteLine($"Save complete. {fileName} has {logicalSize} data entries.");
 }
 
 int AddMemoryValues(string[] dates, double[] values, int logicalSize)
 {
 	double value = 0.0;
 	string dateString = "";
-	dateString = PromptDate("Enter date format mm-dd-yyyy (eg 11-23-2023): ");
-	bool found = false;
+	dateString = PromptDate("Enter date format MM-dd-yyyy: ");
+	bool dupeFound = false;
 	for (int i = 0; i < logicalSize; i++)
 	{
 		if (dates[i].Equals(dateString))
-			found = true;
+			dupeFound = true;
 	}
-	if (found == true)
+	if (dupeFound == true)
 		throw new Exception($"{dateString} is already in memory. Edit entry instead.");
 	value = PromptDoubleBetweenMinMax($"Enter a double value ", 0.0, 1000.0);
 	dates[logicalSize] = dateString;
@@ -238,8 +241,8 @@ void EditMemoryValues(string[] dates, double[] values, int logicalSize)
 	double value = 0.0;
 	string dateString = "";
 	if (logicalSize == 0)
-		throw new Exception("No entries loaded. Please load a file into memory");
-	dateString = PromptDate("Enter date format mm-dd-yyyy (eg 11-23-2023): ");
+		throw new Exception("No entries loaded. Please load a file into memory or add and entry.");
+	dateString = PromptDate("Enter date format MM-dd-yyyy: ");
 	bool edit = false;
 	int editIndex = 0;
 	for (int i = 0; i < logicalSize; i++)
@@ -250,7 +253,7 @@ void EditMemoryValues(string[] dates, double[] values, int logicalSize)
 		}
 	if (edit == false)
 		throw new Exception($"{dateString} isn't in memory. Add entry instead.");
-	value = PromptDoubleBetweenMinMax($"Enter a double value", minValue, maxValue);
+	value = PromptDoubleBetweenMinMax($"Enter a double value ", minValue, maxValue);
 	values[editIndex] = value;
 }
 
@@ -268,7 +271,7 @@ double FindHighestValueInMemory(double[] values, int logicalSize)
 		if (values[i].Equals(max))
 			maxIndex = i;
 	}
-	Console.WriteLine($"The index of the highest value is {maxIndex}");
+	Console.WriteLine($"The index of the highest value is {maxIndex}.");
 	return max;
 }
 
@@ -286,7 +289,7 @@ double FindLowestValueInMemory(double[] values, int logicalSize)
 		if (values[i].Equals(min))
 			minIndex = i;
 	}
-	Console.WriteLine($"The index of the lowest value is {minIndex}");
+	Console.WriteLine($"The index of the lowest value is {minIndex}.");
 	return min;
 }
 
@@ -304,10 +307,7 @@ void GraphValuesInMemory(string[] dates, double[] values, int logicalSize)
 	Console.WriteLine("Not Implemented Yet");
 }
 
-for (int i = 0; i < logicalSize; i++)
-{
 
-}
 // 3 nested for loops 
 // look into substrings
 // make one for loop to make the y axis with input for max sales down to 0
@@ -315,3 +315,6 @@ for (int i = 0; i < logicalSize; i++)
 // make a for loop to get the highest value in memory and then place at appropriate day
 // and then work down the y axis getting all descending values until 0 
 // use substrings to pull the day out of the dates string
+// sort before graph
+// sort before saving
+// look up \t in formatting. might help with displaying graphs
