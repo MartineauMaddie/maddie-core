@@ -5,7 +5,7 @@ double[] values = new double[physicalSize];
 string[] dates = new string[physicalSize];
 string fileName = "";
 double minValue = 0.0;
-double maxValue = 1000.0;
+double maxValue = 100.0;
 bool goAgain = true;
 while (goAgain)
 {
@@ -126,24 +126,24 @@ string PromptDate(string prompt)
 	return date.ToString("MM-dd-yyyy");
 }
 
-double PromptInt(string prompt)
-{
-	int num = 0;
-	while (true)
-	{
-		try
-		{
-			Console.Write(prompt);
-			num = int.Parse(Console.ReadLine());
-			break;
-		}
-		catch (Exception ex)
-		{
-			Console.WriteLine(ex.Message);
-		}
-	}
-	return num;
-}
+// double PromptInt(string prompt)
+// {
+// 	int num = 0;
+// 	while (true)
+// 	{
+// 		try
+// 		{
+// 			Console.Write(prompt);
+// 			num = int.Parse(Console.ReadLine());
+// 			break;
+// 		}
+// 		catch (Exception ex)
+// 		{
+// 			Console.WriteLine(ex.Message);
+// 		}
+// 	}
+// 	return num;
+// }
 
 double PromptDoubleBetweenMinMax(string prompt, double min, double max)
 {
@@ -210,7 +210,7 @@ void SaveMemoryValuesToFile(string filename, string[] dates, double[] values, in
 	csvLines[0] = "dates,values";
 	for (int i = 1; i <= logicalSize; i++)
 	{
-		csvLines[i] = dates[i-1] + "," + values[i-1].ToString();
+		csvLines[i] = dates[i - 1] + "," + values[i - 1].ToString();
 	}
 	File.WriteAllLines(filePath, csvLines);
 	Console.WriteLine($"Save complete. {fileName} has {logicalSize} data entries.");
@@ -229,7 +229,7 @@ int AddMemoryValues(string[] dates, double[] values, int logicalSize)
 	}
 	if (dupeFound == true)
 		throw new Exception($"{dateString} is already in memory. Edit entry instead.");
-	value = PromptDoubleBetweenMinMax($"Enter a double value ", 0.0, 1000.0);
+	value = PromptDoubleBetweenMinMax($"Enter a double value ", 0.0, 100.0);
 	dates[logicalSize] = dateString;
 	values[logicalSize] = value;
 	logicalSize++;
@@ -304,17 +304,50 @@ double FindAverageOfValuesInMemory(double[] values, int logicalSize)
 
 void GraphValuesInMemory(string[] dates, double[] values, int logicalSize)
 {
-	Console.WriteLine("Not Implemented Yet");
+	double rawMax = FindHighestValueInMemory(values, logicalSize);
+	double salesVal = Math.Floor(rawMax / 5.0) * 5.0;
+	double yIncrement = 5;
+	double yAxis = salesVal / yIncrement;
+	string str = "###";
+	Console.Write($"\n{"Sales",6}\n");
+	for (int i = 0; i <= yAxis; i++)
+	{
+		Console.Write($"{salesVal,3:c0}|");
+		for (int col = 1; col <= physicalSize; col++)
+		{
+			for (int j = 0; j < logicalSize; j++)
+			{
+				string dayCheck = dates[j].Substring(3, 2);
+				if (dayCheck.Substring(0, 1) == "0")
+					dayCheck = dayCheck.Substring(1, 1);
+				if (col.ToString() == dayCheck)
+				{
+					if (values[j] >= (salesVal - 2.5) && values[j] < (salesVal + 2.5))
+						Console.Write($"{values[j],3}");
+					else
+					{
+						Console.Write($"{" ",3}");
+					}
+				}
+				if (j == logicalSize - 1)
+				{
+					if (salesVal == 0)
+						Console.Write($"{"0",3}");
+					else
+						Console.Write($"{" ",3}");
+				}
+			}
+		}
+		Console.WriteLine($"");
+		salesVal = salesVal - yIncrement;
+	}
+	//////////////////////////////////// God bless composite formatting
+	Console.Write($"{"_____",4}");
+	for (int i = 1; i <= physicalSize; i++)
+		Console.Write($"{"____",4}");
+	Console.Write($"\n{"Date",4}|");
+	for (int i = 1; i <= physicalSize; i++)
+		Console.Write($"{i,3}|");
+	Console.WriteLine($"");
+	//////////////////////////////////// Hurray The X axis is done
 }
-
-
-// 3 nested for loops 
-// look into substrings
-// make one for loop to make the y axis with input for max sales down to 0
-// make one step to write the x axis with 31 days starting at 1 properly formatted
-// make a for loop to get the highest value in memory and then place at appropriate day
-// and then work down the y axis getting all descending values until 0 
-// use substrings to pull the day out of the dates string
-// sort before graph
-// sort before saving
-// look up \t in formatting. might help with displaying graphs
