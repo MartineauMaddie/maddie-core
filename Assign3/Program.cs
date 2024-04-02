@@ -311,7 +311,7 @@ void GraphValuesInMemory(string[] dates, double[] values, int logicalSize)
 	Console.Write($"\n{"Sales",6}\n");
 	for (int i = 0; i <= yAxis; i++)
 	{
-		Console.Write($"{salesVal,3:c0}|");
+		Console.Write($"{salesVal,4:c0}|");
 		for (int col = 1; col <= physicalSize; col++)
 		{
 			for (int j = 0; j < logicalSize; j++)
