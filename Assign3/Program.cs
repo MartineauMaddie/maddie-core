@@ -305,10 +305,9 @@ double FindAverageOfValuesInMemory(double[] values, int logicalSize)
 void GraphValuesInMemory(string[] dates, double[] values, int logicalSize)
 {
 	double rawMax = FindHighestValueInMemory(values, logicalSize);
-	double salesVal = Math.Floor(rawMax / 5.0) * 5.0;
+	double salesVal = Math.Ceiling(rawMax / 5.0) * 5.0;
 	double yIncrement = 5;
 	double yAxis = salesVal / yIncrement;
-	string str = "###";
 	Console.Write($"\n{"Sales",6}\n");
 	for (int i = 0; i <= yAxis; i++)
 	{
