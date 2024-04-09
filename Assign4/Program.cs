@@ -1,42 +1,268 @@
-﻿// A friend of yours is starting a personal training business and wants to take on personal clients. As part of their business operations, they need a simple system to help them store and track information about their clients. As a pilot, you've agreed to help them by creating a simple console application that will allow them to enter their client details and display the BMI scores and status for their clients. As time goes on, additional functionality can be added to the application.
-// Requirements
+﻿using ClientSpace;
 
-// The program build will be developed in two parts:
-// Part A – Class and Object Implementation
+Client myClient = new();
+List<Client> listOfClients = [];
 
-// Client Class
+LoadFileValuesToMemory(listOfClients); // work through main menu choices top down
 
-// Design a class named Client that meets the following requirements:
+bool loopAgain = true;
+while (loopAgain)
+{
+    try
+    {
+        DisplayMainMenu();
+        string mainMenuChoice = Prompt("\nEnter a Main Menu Choice: ").ToUpper();
+        if (mainMenuChoice == "N")
+            myClient = NewClient();
+        if (mainMenuChoice == "S")
+            ShowClientInfo(myClient);
+        if (mainMenuChoice == "A")
+            Console.WriteLine("Not Implemented Yet");
+        AddClientToList(myClient, listOfClients);
+        if (mainMenuChoice == "F")
+            Console.WriteLine("Not Implemented Yet");
+        FindClientInList(listOfClients);
+        if (mainMenuChoice == "R")
+            Console.WriteLine("Not Implemented Yet");
+        RemoveClientFromList(myClient, listOfClients);
+        if (mainMenuChoice == "D")
+            Console.WriteLine("Not Implemented Yet");
+        DisplayAllClientsInList(listOfClients);
+        if (mainMenuChoice == "Q")
+        {
+            SaveMemoryValuesToFile(listOfClients);
+            loopAgain = false;
+            throw new Exception("Bye, hope to see you again.");
+        }
+        if (mainMenuChoice == "E")
+        {
+            while (true)
+            {
+                DisplayEditMenu();
+                string editMenuChoice = Prompt("\nEnter an Edit Menu Choice: ").ToUpper();
+                if (editMenuChoice == "F")
+                    GetFirstName(myClient);
+                if (editMenuChoice == "L")
+                    GetLastName(myClient);
+                if (editMenuChoice == "W")
+                    GetWeight(myClient);
+                if (editMenuChoice == "H")
+                    GetHeight(myClient);
+                if (editMenuChoice == "R")
+                    throw new Exception("Returning to Main Menu");
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"{ex.Message}");
+    }
+}
 
-//     A string field to store the client's first name and a corresponding property FirstName with both get and set
-//         The first name cannot be empty, null, or whitespace; ensure that the stored value is trimmed of leading and trailing whitespace
-//     A string field to store the client's last name and a corresponding property LastName with both get and set
-//         The last name cannot be empty, null, or whitespace; ensure that the stored value is trimmed of leading and trailing whitespace
-//     An int field to store the client's weight in pounds and a corresponding property Weight with both get and set
-//         The weight must be greater than zero
-//     An int field to store the client's height in inches and a corresponding property Height with both get and set
-//         The weight must be greater than zero
-//     A greedy constructor that requires the first name, last name, weight, and height as parameters
-//         Use the properties in the constructor for setting the fields to take advantage of any validation checks already coded
-//     A read-only property named BmiScore that will return as a double the BMI score for the client
-//     A read-only property named BmiStatus that will return as a string the BMI status for the corresponding BMI score
-//     A read-only property named FullName that will return as a string the client's full name in the format Lastname, FirstName
+void DisplayMainMenu()
+{
+    Console.WriteLine("\nMain Menu");
+    Console.WriteLine("N) New Client");
+    Console.WriteLine("S) Show Client Info");
+    Console.WriteLine("E) Edit Client Info");
+    Console.WriteLine("A) Add Client to List");
+    Console.WriteLine("F) Find Client in List");
+    Console.WriteLine("R) Remove Client from List");
+    Console.WriteLine("D) Display Client List");
+    Console.WriteLine("Q) Quit");
+}
 
-// Additional Information
+void DisplayEditMenu()
+{
+    Console.WriteLine("Edit Menu");
+    Console.WriteLine("F) First Name");
+    Console.WriteLine("L) Last Name");
+    Console.WriteLine("W) Weight");
+    Console.WriteLine("H) Height");
+    Console.WriteLine("R) Return to Main Menu");
+}
 
-// The formula to calculate a client's weight follows:
+Client NewClient()
+{
+    Client myClient = new();
+    GetFirstName(myClient);
+    GetLastName(myClient);
+    GetWeight(myClient);
+    GetHeight(myClient);
+    return myClient;
+}
 
-// Formula: weight / height2 x 703
+void GetFirstName(Client client)
+{
+    string myString = Prompt($"Please enter First Name: ");
+    client.FirstName = myString;
+}
 
-// Where height is in inches and weight is in pounds.
+void GetLastName(Client client)
+{
+    string myString = Prompt($"Please enter Last Name: ");
+    client.LastName = myString;
+}
 
-// The status for corresponding BMI values are as follows:
-// BMI Score 	Status
-// <= 18.4 	Underweight
-// 18.5 - 24.9 	Normal
-// 25.0 - 39.9 	Overweight
-// >= 40 	Obese
+void GetWeight(Client client)
+{
+    int myInt = PromptIntBetweenMinMax("Please enter Weight in pounds: ", 0, 300);
+    client.Weight = myInt;
+}
 
-// Write a program to test your Client class as shown in the sample run below. The program must, at a minimum, demonstrate the following:
+void GetHeight(Client client)
+{
+    int myInt = PromptIntBetweenMinMax("Please enter Height in inches: ", 0, 60);
+    client.Height = myInt;
+}
 
-// a. prompt for a string b. prompt for an int c. create an instance of Client d. display the status or score, depending on user request, along with full client name e. have user friendly error handling (i.e. the program must not crash)
+void ShowClientInfo(Client client)
+{
+    if (client == null)
+        throw new Exception($"No Client In Memory");
+    Console.WriteLine($"\n{client.ToString()}");
+    Console.WriteLine($"BMI Score   :\t{client.BmiScore:n2}");
+    Console.WriteLine($"BMI Status  :\t{client.BmiStatus}");
+}
+
+string Prompt(string prompt)
+{
+    string myString = "";
+    while (true)
+    {
+        try
+        {
+            Console.Write(prompt);
+            myString = Console.ReadLine().Trim();
+            if (string.IsNullOrWhiteSpace(myString))
+                throw new Exception($"Please enter something.");
+            break;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+    return myString;
+}
+
+// double PromptDoubleBetweenMinMax(String msg, double min, double max)
+// {
+//     double num = 0;
+//     while (true)
+//     {
+//         try
+//         {
+//             Console.Write($"{msg} between {min} and {max}: ");
+//             num = double.Parse(Console.ReadLine());
+//             if (num < min || num > max)
+//                 throw new Exception($"Must be between {min:n2} and {max:n2}");
+//             return num;
+//         }
+//         catch (Exception ex)
+//         {
+//             Console.WriteLine($"Invalid: {ex.Message}");
+//         }
+//     }  
+// }
+
+int PromptIntBetweenMinMax(string msg, int min, int max)
+{
+    int num = 0;
+    while (true)
+    {
+        try
+        {
+            Console.Write($"{msg} between {min} and {max}: ");
+            num = int.Parse(Console.ReadLine());
+            if (num < min || num > max)
+                throw new Exception($"Must be between {min} and {max}");
+            return num;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Invalid: {ex.Message}");
+        }
+    }
+}
+
+// void DisplayClientInformation(Client myClient)
+// {
+//     Console.WriteLine($"\tFirst Name  :\t{myClient.FirstName}");
+//     Console.WriteLine($"\tLast Name   :\t{myClient.LastName}");
+//     Console.WriteLine($"\tWeight      :\t{myClient.Weight}");
+//     Console.WriteLine($"\tHeight      :\t{myClient.Height}");
+// }
+
+void AddClientToList(Client myClient, List<Client> listOfClients)
+{
+    listOfClients.Add(myClient);
+}
+
+Client FindClientInList(List<Client> listOfClients)
+{
+    Console.WriteLine("Not Implemented Yet PartB");
+    return new Client();
+}
+
+void RemoveClientFromList(Client myClient, List<Client> listOfClients)
+{
+    Console.WriteLine("Not Implemented Yet PartB");
+}
+
+void DisplayAllClientsInList(List<Client> listOfClients)
+{
+    foreach (Client client in listOfClients)
+        ShowClientInfo(client);
+}
+
+void LoadFileValuesToMemory(List<Client> listOfClients)
+{
+    while (true)
+    {
+        try
+        {
+            //string fileName = Prompt("Enter file name including .csv or .txt: ");
+            string fileName = "regin.csv";
+            string filePath = $"./data/{fileName}";
+            if (!File.Exists(filePath))
+                throw new Exception($"The file {fileName} does not exist.");
+            string[] csvFileInput = File.ReadAllLines(filePath);
+            for (int i = 0; i < csvFileInput.Length; i++)
+            {
+                //Console.WriteLine($"lineIndex: {i}; line: {csvFileInput[i]}");
+                string[] items = csvFileInput[i].Split(',');
+                for (int j = 0; j < items.Length; j++)
+                {
+                    //Console.WriteLine($"itemIndex: {j}; item: {items[j]}");
+                }
+                Client myClient = new(items[0], items[1], int.Parse(items[2]), int.Parse(items[3]));
+                listOfClients.Add(myClient);
+            }
+            Console.WriteLine($"Load complete. {fileName} has {listOfClients.Count} data entries");
+            break;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"{ex.Message}");
+        }
+    }
+}
+
+void SaveMemoryValuesToFile(List<Client> listOfClients)
+{
+    //string fileName = Prompt("Enter file name including .csv or .txt: ");
+    string fileName = "regout.csv";
+    string filePath = $"./data/{fileName}";
+    string[] csvLines = new string[listOfClients.Count];
+    for (int i = 0; i < listOfClients.Count; i++)
+    {
+        csvLines[i] = listOfClients[i].ToString();
+    }
+    File.WriteAllLines(filePath, csvLines);
+    Console.WriteLine($"Save complete. {fileName} has {listOfClients.Count} entries.");
+}
+
+
+
+
