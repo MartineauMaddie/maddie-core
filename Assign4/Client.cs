@@ -13,8 +13,8 @@ namespace ClientSpace
         {
             FirstName = "Jane";
             LastName = "Doe";
-            Weight = 0;
-            Height = 0;
+            Weight = 150;
+            Height = 67;
         }
 
         // Greedy Constructor
@@ -76,8 +76,7 @@ namespace ClientSpace
         {
             get
             {
-                double BmiScore = 0.0;
-                BmiScore = Weight / (Height * Height) * 703;
+                double BmiScore = Weight / Math.Pow(Height, 2) * 703;
                 return BmiScore;
             }
         }
@@ -103,7 +102,7 @@ namespace ClientSpace
         {
             get
             {
-                string FullName = LastName + ", " + FirstName;    
+                string FullName = $"{LastName}, {FirstName}";    
                 return FullName;
             }
         }
