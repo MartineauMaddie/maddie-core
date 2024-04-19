@@ -3,7 +3,7 @@
 Client myClient = new();
 List<Client> listOfClients = [];
 
-LoadFileValuesToMemory(listOfClients); // work through main menu choices top down
+LoadFileValuesToMemory(listOfClients);
 
 bool loopAgain = true;
 while (loopAgain)
@@ -104,13 +104,13 @@ void GetLastName(Client client)
 
 void GetWeight(Client client)
 {
-    int myInt = PromptIntBetweenMinMax("\nPlease enter client's Weight in pounds: ", 0, 300);
+    int myInt = PromptIntBetweenMinMax("\nPlease enter client's Weight in pounds", 0, 300);
     client.Weight = myInt;
 }
 
 void GetHeight(Client client)
 {
-    int myInt = PromptIntBetweenMinMax("\nPlease enter client's Height in inches: ", 0, 90);
+    int myInt = PromptIntBetweenMinMax("\nPlease enter client's Height in inches", 0, 90);
     client.Height = myInt;
 }
 
@@ -125,10 +125,8 @@ void GetHeight(Client client)
 
 void ShowClientInfo(Client myClient)
 {
-    // Console.WriteLine($"\nFirst Name   :\t{myClient.FirstName}");
-    // Console.WriteLine($"Last Name    :\t{myClient.LastName}");
     if (myClient == null)
-         throw new Exception($"No Client In Memory");
+        throw new Exception($"No Client In Memory");
     Console.WriteLine($"\n========= Client Info =========");
     Console.WriteLine($"\nClient Name  :\t{myClient.FullName}");
     Console.WriteLine($"Weight       :\t{myClient.Weight} lbs.");
@@ -180,6 +178,8 @@ int PromptIntBetweenMinMax(string msg, int min, int max)
 void AddClientToList(Client myClient, List<Client> listOfClients)
 {
     listOfClients.Add(myClient);
+    // maybe this here to stop double entries?
+    // Client myClient = new(); 
 }
 
 // Client FindClientInList(List<Client> listOfClients)
