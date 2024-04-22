@@ -19,11 +19,9 @@ while (loopAgain)
         if (mainMenuChoice == "A")
             AddClientToList(myClient, listOfClients);
         if (mainMenuChoice == "F")
-            Console.WriteLine("Not Implemented Yet");
-        //FindClientInList(listOfClients);
+            myClient = FindClientInList(listOfClients);
         if (mainMenuChoice == "R")
-            Console.WriteLine("Not Implemented Yet");
-        //RemoveClientFromList(myClient, listOfClients);
+            RemoveClientFromList(myClient, listOfClients);
         if (mainMenuChoice == "D")
             DisplayAllClientsInList(listOfClients);
         if (mainMenuChoice == "Q")
@@ -114,15 +112,6 @@ void GetHeight(Client client)
     client.Height = myInt;
 }
 
-// void ShowClientInfo(Client client)
-// {
-//     if (client == null)
-//         throw new Exception($"No Client In Memory");
-//     Console.WriteLine($"\n{client.ToString()}");
-//     Console.WriteLine($"BMI Score :\t{client.BmiScore:n1}");
-//     Console.WriteLine($"BMI Status:\t{client.BmiStatus}");
-// }
-
 void ShowClientInfo(Client myClient)
 {
     if (myClient == null)
@@ -135,63 +124,34 @@ void ShowClientInfo(Client myClient)
     Console.WriteLine($"BMI Status   :\t{myClient.BmiStatus}");
 }
 
-string Prompt(string prompt)
-{
-    string myString = "";
-    while (true)
-    {
-        try
-        {
-            Console.Write(prompt);
-            myString = Console.ReadLine().Trim();
-            if (string.IsNullOrWhiteSpace(myString))
-                throw new Exception($"Please enter something.");
-            return myString;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
-    }
-}
-
-int PromptIntBetweenMinMax(string msg, int min, int max)
-{
-    int num = 0;
-    while (true)
-    {
-        try
-        {
-            Console.Write($"{msg} between {min} and {max}: ");
-            num = int.Parse(Console.ReadLine());
-            if (num < min || num > max)
-                throw new Exception($"Must be between {min} and {max}");
-            return num;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Invalid: {ex.Message}");
-        }
-    }
-}
-
 void AddClientToList(Client myClient, List<Client> listOfClients)
 {
+    if (myClient == null)
+        throw new Exception($"No Client In Memory");
     listOfClients.Add(myClient);
-    // maybe this here to stop double entries?
-    // Client myClient = new(); 
+    // Theres a bug here where multiple Clients added to the list will all be edited instead of just one
+    // maybe this here to stop double entries? 
+    // myClient = new();
 }
 
-// Client FindClientInList(List<Client> listOfClients)
-// {
-//     Console.WriteLine("Not Implemented Yet PartB");
-//     return new Client();
-// }
+Client FindClientInList(List<Client> listOfClients)
+{
+    string searchString = Prompt("\nEnter part of Clients first or last name: ");
+    foreach (Client client in listOfClients)
+        if (client.LastName.Contains(searchString) || client.FirstName.Contains(searchString))
+            return client;
+    Console.WriteLine($"\nNo Clients match search terms.");
+    return null;
+}
 
-// void RemoveClientFromList(Client myClient, List<Client> listOfClients)
-// {
-//     Console.WriteLine("Not Implemented Yet PartB");
-// }
+void RemoveClientFromList(Client myClient, List<Client> listOfClients)
+{
+    if (myClient == null)
+        throw new Exception($"No Client In Memory");
+    Console.WriteLine($"\n{myClient.FullName} is being removed.");
+    listOfClients.Remove(myClient);
+    Console.WriteLine("\nClient removed.");
+}
 
 void DisplayAllClientsInList(List<Client> listOfClients)
 {
@@ -239,6 +199,44 @@ void SaveMemoryValuesToFile(List<Client> listOfClients)
     Console.WriteLine($"\nSave complete. {fileName} has {listOfClients.Count} entries.");
 }
 
+string Prompt(string prompt)
+{
+    string myString = "";
+    while (true)
+    {
+        try
+        {
+            Console.Write(prompt);
+            myString = Console.ReadLine().Trim();
+            if (string.IsNullOrWhiteSpace(myString))
+                throw new Exception($"Please enter something.");
+            return myString;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+}
 
+int PromptIntBetweenMinMax(string msg, int min, int max)
+{
+    int num = 0;
+    while (true)
+    {
+        try
+        {
+            Console.Write($"{msg} between {min} and {max}: ");
+            num = int.Parse(Console.ReadLine());
+            if (num < min || num > max)
+                throw new Exception($"Must be between {min} and {max}");
+            return num;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Invalid: {ex.Message}");
+        }
+    }
+}
 
 

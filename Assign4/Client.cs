@@ -102,7 +102,7 @@ namespace ClientSpace
         {
             get
             {
-                string FullName = $"{LastName}, {FirstName}";    
+                string FullName = $"{LastName}, {FirstName}";
                 return FullName;
             }
         }
