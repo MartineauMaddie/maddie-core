@@ -17,11 +17,17 @@ while (loopAgain)
         if (mainMenuChoice == "S")
             ShowClientInfo(myClient);
         if (mainMenuChoice == "A")
+        {
             AddClientToList(myClient, listOfClients);
+            myClient = new();
+        }
         if (mainMenuChoice == "F")
             myClient = FindClientInList(listOfClients);
         if (mainMenuChoice == "R")
+        {
             RemoveClientFromList(myClient, listOfClients);
+            myClient = new();
+        }
         if (mainMenuChoice == "D")
             DisplayAllClientsInList(listOfClients);
         if (mainMenuChoice == "Q")
@@ -129,8 +135,8 @@ void AddClientToList(Client myClient, List<Client> listOfClients)
     if (myClient == null)
         throw new Exception($"No Client In Memory");
     listOfClients.Add(myClient);
-    // Theres a bug here where multiple Clients added to the list will all be edited instead of just one
-    // maybe this here to stop double entries? 
+    // There was a bug here where editing the client in memory would also edit the same client in the list despite the client in memory not being added to the list yet. 
+    // I made the client in memory set to the default client after clients were added or removed from the list. This seemed to work.
     // myClient = new();
 }
 
@@ -155,6 +161,15 @@ void RemoveClientFromList(Client myClient, List<Client> listOfClients)
 
 void DisplayAllClientsInList(List<Client> listOfClients)
 {
+    // listOfClients.Sort(delegate ((string, string, int, int) cli1, (string, string, int, int) cli2)
+    // {
+    //     return cli1.LastName.CompareTo(cli2.LastName);
+    // });
+
+    listOfClients.Sort((cli1, cli2) =>
+    {
+        return cli1.LastName.CompareTo(cli2.LastName);
+    });
     foreach (Client client in listOfClients)
         ShowClientInfo(client);
 }
