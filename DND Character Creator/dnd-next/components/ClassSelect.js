@@ -4,37 +4,37 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export default function RaceSelect({ raceData }) {
+export default function ClassSelect({ classData }) {
 
-  const [selectedRace, setSelectedRace] = React.useState("")
-  const races = raceData
+  const [selectedClass, setSelectedClass] = React.useState("")
+  const classes = classData
   const handleChange = (event) => {
-    setSelectedRace(event.target.value);
+    setSelectedClass(event.target.value);
   };
 
   return (<FormControl sx={{ m: 1, minWidth: 120 }}>
-    <InputLabel id="select-helper-label">Race</InputLabel>
+    <InputLabel id="select-helper-label">Class</InputLabel>
     <Select
       labelId="select-helper-label"
       id="select-helper"
-      value={selectedRace}
-      label="Race"
+      value={selectedClass}
+      label="Class"
       onChange={handleChange}
     >
 
-      {races.map((race) => (
+      {classes.map((charClass) => (
         <MenuItem
-          value={race.name}
-          key={race.id}
+          value={charClass.name}
+          key={charClass.id}
         >
-          {race.name}
+          {charClass.name}
         </MenuItem>
       ))}
 
     </Select>
 
     <hr />
-    <p>Your selected race: {selectedRace}</p>
+    <p>Your selected class: {selectedClass}</p>
 
   </FormControl>)
 }

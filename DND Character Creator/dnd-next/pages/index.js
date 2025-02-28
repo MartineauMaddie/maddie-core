@@ -1,19 +1,19 @@
 import React from 'react';
 import { useState } from 'react';
 import Head from 'next/head'
-import Image from 'next/image'
-
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-
 import Container from '@mui/material/Container';
-
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
 import RaceSelect from '@/components/RaceSelect';
+import ClassSelect from '@/components/ClassSelect';
+import CharacterCard from '@/components/CharacterCard';
+
+import { dndData } from '@/dnd-data';
 
 export default function Home() {
 
@@ -22,7 +22,7 @@ export default function Home() {
     const response = await fetch(`${BASE_URL}`)
 
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
     setCharacterData(data)
   }
 
@@ -42,6 +42,7 @@ export default function Home() {
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
         />
       </Head>
+
       <AppBar position="relative">
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
@@ -49,7 +50,6 @@ export default function Home() {
           </Typography>
         </Toolbar>
       </AppBar>
-
 
       <main>
         <Container maxWidth="sm">
@@ -60,9 +60,10 @@ export default function Home() {
               pb: 6,
             }}
           >
-            <Typography variant="h5" align="center" color="text.primary" paragraph>
+            {/* <Typography variant="h5" align="center" color="text.primary" paragraph>
               Race here: {characterData.race}
             </Typography>
+            
             <Typography
               component="h1"
               variant="h4"
@@ -71,12 +72,12 @@ export default function Home() {
               gutterBottom
             >
               Description: {characterData.description}
-            </Typography>
+            </Typography> */}
             <Box
               display="flex"
               justifyContent="center"
-
             >
+
               <Button
                 variant="contained"
                 onClick={loadData}
@@ -84,13 +85,26 @@ export default function Home() {
                 Get Data
               </Button>
 
-              <RaceSelect />
+              <RaceSelect
+                raceData={dndData.race_data}
+              />
+
+              <ClassSelect
+                classData={dndData.class_data}
+              />
 
             </Box>
+
+            <CharacterCard 
+              // charLevel={}
+              // race={}
+              // charClass={}
+            />
+
           </Box>
         </Container>
       </main>
     </div>
-  )
+  );
 
 }
