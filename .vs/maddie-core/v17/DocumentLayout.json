@@ -1,0 +1,45 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\GitHub\\maddie-core\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3FA8729A-B206-4B8F-B345-5E35B8DCD980}|Assign3\\Assign3-2024-RLaw.csproj|c:\\users\\madeline\\onedrive - nait\\documents\\github\\maddie-core\\assign3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FA8729A-B206-4B8F-B345-5E35B8DCD980}|Assign3\\Assign3-2024-RLaw.csproj|solutionrelative:assign3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\GitHub\\maddie-core\\Assign3\\Program.cs",
+              "RelativeDocumentMoniker": "Assign3\\Program.cs",
+              "ToolTip": "C:\\Users\\Madeline\\OneDrive - NAIT\\Documents\\GitHub\\maddie-core\\Assign3\\Program.cs",
+              "RelativeToolTip": "Assign3\\Program.cs",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T17:07:07.829Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
